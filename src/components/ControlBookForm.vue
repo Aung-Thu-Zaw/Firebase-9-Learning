@@ -83,7 +83,13 @@
 </template>
 
 <script>
-import { addDoc, collection, deleteDoc, doc } from "@firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  serverTimestamp,
+} from "@firebase/firestore";
 import { db } from "../firebase/config";
 import { ref } from "@vue/reactivity";
 export default {
@@ -101,6 +107,7 @@ export default {
         description: description.value,
         author: author.value,
         price: price.value,
+        created_at: serverTimestamp(),
       });
 
       bookName.value = "";

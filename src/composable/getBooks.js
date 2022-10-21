@@ -2,6 +2,7 @@ import {
   collection,
   getDocs,
   onSnapshot,
+  orderBy,
   query,
   where,
 } from "firebase/firestore";
@@ -17,7 +18,7 @@ const getBooks = () => {
       const colRef = collection(db, "books");
 
       // Query
-      // let q = query(colRef, where("author", "!=", "Aung Thu Zaw"));
+      // let q = query(colRef, where("author", "===", "Aung Thu Zaw"));
 
       // onSnapshot(q, (snapshot) => {
       //   books.value = snapshot.docs.map((doc) => {
@@ -25,7 +26,9 @@ const getBooks = () => {
       //   });
       // });
 
-      onSnapshot(colRef, (snapshot) => {
+      let q = query(colRef, orderBy("created_at", "desc"));
+
+      onSnapshot(q, (snapshot) => {
         books.value = snapshot.docs.map((doc) => {
           return { id: doc.id, ...doc.data() };
         });

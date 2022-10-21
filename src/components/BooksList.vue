@@ -16,6 +16,7 @@
           <p class="fw-bold">
             Book ID - <span class="text-danger">{{ book.id }}</span>
           </p>
+          <!-- <p class="fw-bold">Created_At : {{ book.created_at }}</p> -->
 
           <div>
             <button class="btn btn-outline-warning">Order Now</button>

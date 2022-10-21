@@ -1,4 +1,10 @@
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 import { ref } from "vue";
 import { db } from "../firebase/config";
 
@@ -9,6 +15,15 @@ const getBooks = () => {
   let load = () => {
     try {
       const colRef = collection(db, "books");
+
+      // Query
+      // let q = query(colRef, where("author", "!=", "Aung Thu Zaw"));
+
+      // onSnapshot(q, (snapshot) => {
+      //   books.value = snapshot.docs.map((doc) => {
+      //     return { id: doc.id, ...doc.data() };
+      //   });
+      // });
 
       onSnapshot(colRef, (snapshot) => {
         books.value = snapshot.docs.map((doc) => {

@@ -26,7 +26,6 @@
               class="form-control"
               placeholder="Enter Book Description"
               v-model="description"
-              required
             >
                 {{ description }}
               </textarea

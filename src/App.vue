@@ -31,7 +31,6 @@ export default {
   },
   setup() {
     let { books, error, load } = getBooks();
-
     load();
 
     return { books, error };

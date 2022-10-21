@@ -14,8 +14,6 @@ const getBooks = () => {
       books.value = response.docs.map((doc) => {
         return { id: doc.id, ...doc.data() };
       });
-
-      console.log(books.value);
     } catch (err) {
       error.value = err.message;
     }

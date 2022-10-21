@@ -114,6 +114,8 @@ export default {
     let deleteDocument = async () => {
       let docRef = doc(db, "books", deleteID.value);
       await deleteDoc(docRef);
+
+      deleteID.value = "";
       alert("Complete Delete Document");
     };
     return {

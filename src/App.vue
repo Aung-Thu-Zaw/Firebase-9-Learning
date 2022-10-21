@@ -16,8 +16,21 @@
       <Spinner></Spinner>
     </div>
   </div>
-  <div>
-    <SignUPForm />
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <SignUPForm />
+      </div>
+      <div class="col-6">
+        <LoginForm />
+      </div>
+    </div>
+
+    <div class="d-grid">
+      <button type="submit" @click="logoutAccount" class="btn btn-danger my-5">
+        Logout
+      </button>
+    </div>
   </div>
 </template>
 
@@ -27,6 +40,9 @@ import BooksList from "./components/BooksList";
 import ControlBookForm from "./components/ControlBookForm.vue";
 import getBooks from "./composable/getBooks";
 import SignUPForm from "./components/SignUpForm.vue";
+import LoginForm from "./components/LoginForm.vue";
+import { signOut } from "@firebase/auth";
+import { auth } from "./firebase/config";
 
 export default {
   components: {
@@ -34,12 +50,18 @@ export default {
     ControlBookForm,
     BooksList,
     SignUPForm,
+    LoginForm,
   },
   setup() {
     let { books, error, load } = getBooks();
     load();
+    let logoutAccount = async () => {
+      let creditional = await signOut(auth);
 
-    return { books, error };
+      console.log("user sign out", creditional);
+    };
+
+    return { books, error, logoutAccount };
   },
 };
 </script>

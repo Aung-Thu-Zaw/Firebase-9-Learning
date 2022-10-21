@@ -31,6 +31,16 @@
         Logout
       </button>
     </div>
+    <div class="d-grid">
+      <button type="submit" @click="unsubscribe" class="btn btn-success my-5">
+        Unsubscribe From DB / Auth Changes
+      </button>
+    </div>
+    <!-- <div class="d-grid">
+      <button type="submit" @click="subscribe" class="btn btn-primary my-5">
+        Subscribe
+      </button>
+    </div> -->
   </div>
 </template>
 
@@ -41,7 +51,7 @@ import ControlBookForm from "./components/ControlBookForm.vue";
 import getBooks from "./composable/getBooks";
 import SignUPForm from "./components/SignUpForm.vue";
 import LoginForm from "./components/LoginForm.vue";
-import { signOut } from "@firebase/auth";
+import { onAuthStateChanged, signOut } from "@firebase/auth";
 import { auth } from "./firebase/config";
 
 export default {
@@ -61,7 +71,19 @@ export default {
       console.log("user sign out", creditional);
     };
 
-    return { books, error, logoutAccount };
+    onAuthStateChanged(auth, (user) => {
+      console.log("user state change", user);
+    });
+
+    // const unsubAuth = onAuthStateChanged(auth, (user) => {
+    //   console.log("user state change", user);
+    // });
+
+    // let unsubscribe = () => {
+    //   unsubAuth();
+    //   console.log("unsubscribe");
+    // };
+    return { books, error, logoutAccount, unsubscribe };
   },
 };
 </script>

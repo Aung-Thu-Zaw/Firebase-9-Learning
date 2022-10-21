@@ -12,8 +12,6 @@
               type="text"
               class="form-control"
               name="name"
-              id=""
-              aria-describedby="helpId"
               placeholder="Book Name"
               v-model="bookName"
               required
@@ -35,8 +33,6 @@
               type="text"
               class="form-control"
               name="author"
-              id=""
-              aria-describedby="helpId"
               placeholder="Author Name"
               v-model="author"
               required
@@ -47,8 +43,6 @@
               type="text"
               class="form-control"
               name="price"
-              id=""
-              aria-describedby="helpId"
               placeholder="Price"
               v-model="price"
               required
@@ -67,7 +61,6 @@
               type="text"
               class="form-control"
               name="id"
-              aria-describedby="helpId"
               placeholder="Document ID"
               v-model="deleteID"
               required
@@ -86,8 +79,6 @@
               type="text"
               class="form-control"
               name="name"
-              id=""
-              aria-describedby="helpId"
               placeholder="Document ID"
               v-model="updatedID"
               required
@@ -101,7 +92,6 @@
       <div class="col-2"></div>
     </div>
   </div>
-  {{ updatedID }}
 </template>
 
 <script>

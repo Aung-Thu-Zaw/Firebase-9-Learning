@@ -1,7 +1,8 @@
 <template>
   <h1 class="text-primary">Firebase Learning</h1>
+
   <div>
-    <BookForm></BookForm>
+    <ControlBookForm></ControlBookForm>
   </div>
 
   <div class="container border border-3 shadow p-3">
@@ -15,19 +16,24 @@
       <Spinner></Spinner>
     </div>
   </div>
+  <div>
+    <SignUPForm />
+  </div>
 </template>
 
 <script>
 import Spinner from "./components/Spinner";
 import BooksList from "./components/BooksList";
-import BookForm from "./components/ControlBookForm.vue";
+import ControlBookForm from "./components/ControlBookForm.vue";
 import getBooks from "./composable/getBooks";
+import SignUPForm from "./components/SignUpForm.vue";
 
 export default {
   components: {
     Spinner,
-    BookForm,
+    ControlBookForm,
     BooksList,
+    SignUPForm,
   },
   setup() {
     let { books, error, load } = getBooks();
